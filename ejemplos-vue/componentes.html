@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+  <title>Componentes Vue</title>
+</head>
+<body>
+  <div id="components-demo">
+    <vue-label title="HOLA"></vue-label>
+    <button-counter></button-counter>
+  </div>
+    <script src="./lib/vue.min.js"></script>
+  <script>
+  Vue.component('button-counter', {
+    data: function () {
+      return {
+        count: 0
+      }
+    },
+    template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+  });
+
+  Vue.component('vue-label',{
+    props:['title'],
+    template:'<label>{{title}}</label>'
+  })
+
+  new Vue({ el: '#components-demo' })
+  </script>
+</body>

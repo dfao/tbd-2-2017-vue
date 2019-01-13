@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+  <title>Formulario Vue.js</title>
+  <style>
+  body{
+  font-family:sans-serif;
+}</style>
+</head>
+<body>
+  <div id="app">
+  <div>
+    <label for="new">Nuevo número</label>
+    <input id="new" type="number"  v-model="newNumber" @keyup.enter="addNumber">
+    <button @click="addNumber">Agregar</button>
+  </div>
+    <ul>
+      <li @click="deleteNumber(i)" v-for="n,i in numbers">{{n}}
+      </li>
+    </ul>
+  </div>
+  <script src="./lib/vue.min.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#app',
+  data: {
+    newNumber:null,
+    numbers:[]
+  },
+  methods:{
+    addNumber:function(){
+    if(this.newNumber){
+      this.numbers.push(this.newNumber);
+      this.newNumber = null;}
+    },
+    deleteNumber:function(index){
+      this.numbers.splice(index,1)
+    }
+  }
+})
+  </script>
+</body>
